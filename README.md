@@ -36,7 +36,7 @@ This work addresses these challenges through:
 
 ### Network Overview
 
-![Panoramic GAN Architecture](docs/panoramic_gan_architecture (3).svg)
+![Panoramic GAN Architecture](doc/panoramic_gan_architecture (3).svg)
 
 The architecture consists of two main components:
 
