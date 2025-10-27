@@ -36,7 +36,9 @@ This work addresses these challenges through:
 
 ### Network Overview
 
-![Panoramic GAN Architecture](doc/panoramic_gan_architecture (3).svg)
+<p align="center" style="background-color: white; padding: 20px;">
+  <img src="https://raw.githubusercontent.com/Anshuman047/Panoramic_GAN/main/doc/panoramic_gan_architecture%20(3).svg" alt="Panoramic GAN Architecture" width="800" style="background-color: white;"/>
+</p>
 
 The architecture consists of two main components:
 
