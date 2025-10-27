@@ -298,32 +298,14 @@ Due to imbalanced dataset (Rural: 60%, City: 34%, Forest: 6%):
 
 ### Setup Instructions
 
-#### 1. Clone Repository
-```bash
-git clone https://github.com/yourusername/panoramic-gan.git
-cd panoramic-gan
-```
-
-#### 2. Create Virtual Environment
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate (Linux/Mac)
-source venv/bin/activate
-
-# Activate (Windows)
-venv\Scripts\activate
-```
-
-#### 3. Install PyTorch (GPU)
+#### 1. Install PyTorch (GPU)
 For CUDA 12.4:
 ```bash
 pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 \
   --index-url https://download.pytorch.org/whl/cu124
 ```
 
-#### 4. Install Other Dependencies
+#### 2. Install Other Dependencies
 ```bash
 pip install -r requirements.txt
 ```
