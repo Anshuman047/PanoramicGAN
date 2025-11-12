@@ -11,8 +11,6 @@ This repository presents a Conditional Generative Adversarial Network (GAN) for 
 - [Training Methodology](#training-methodology)
 - [Results](#results)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Code Structure](#code-structure)
 
 ---
 
@@ -225,7 +223,6 @@ L_D_total = L_D + λ_R1 · L_R1
 ### Training Infrastructure
 | Component | Specification |
 |-----------|--------------|
-| Platform | Kaggle Notebooks |
 | GPU | NVIDIA Tesla P100 (16GB VRAM) |
 | Framework | PyTorch 2.6.0 |
 | CUDA | 12.4 |
@@ -458,108 +455,3 @@ python generate.py \
 
 ---
 
-## Code Structure
-
-### File Organization
-```
-panoramic-gan/
-│
-├── train.py                    # Main training script
-├── models.py                   # GAN architecture (Generator, Discriminator, EMA)
-├── evaluate.py                 # Evaluation with FID/IS metrics
-├── generate.py                 # Image generation inference
-├── requirements.txt            # Python dependencies
-│
-├── docs/                       # Documentation
-│   └── architecture.png        # Architecture diagram
-│
-└── samples/                    # Generated samples
-```
-
-### Code Breakdown
-
-**models.py (Network Architectures)**
-
-Contains:
-- `ImprovedGenerator` - Generator network class
-- `ImprovedDiscriminator` - Discriminator network class
-- `ResidualBlock` - Residual connection building block
-- `EMA` - Exponential Moving Average helper class
-- `init_weights()` - Weight initialization function
-
-Key Classes:
-```python
-class ImprovedGenerator(nn.Module):
-    def __init__(self, noise_dim, class_dim, img_channels)
-    def forward(self, noise, labels)
-
-class ImprovedDiscriminator(nn.Module):
-    def __init__(self, class_dim, img_channels)
-    def forward(self, x, labels)
-
-class ResidualBlock(nn.Module):
-    def __init__(self, channels, use_spectral_norm=False)
-
-class EMA:
-    def __init__(self, model, decay)
-    def update(self, model)
-```
-
-**train.py (Main Training Loop)**
-
-Contains:
-- Argument parsing and configuration
-- Dataset loading (`PanoramicDataset` class)
-- Model instantiation (Generator, Discriminator, EMA)
-- Training loop with loss calculation
-- Checkpoint saving and sample generation
-- Progressive learning rate scheduling
-
-Key Classes/Functions:
-```python
-class PanoramicDataset(Dataset)      # Custom dataset loader
-def init_weights(m)                  # Weight initialization
-def save_samples(gen_model, epoch)   # Generate samples
-# Main training loop (epochs 1-250)
-```
-
-**evaluate.py (Evaluation Metrics)**
-
-Contains:
-- `ValidatedGANMetrics` - Combined FID and IS calculator
-- `DatasetLoader` - Loads real images with train/val split support
-- `AcademicPanoramicEvaluator` - Main evaluation orchestrator
-- Feature extraction using Inception-v3
-- Statistical validation and confidence intervals
-
-Key Classes:
-```python
-class ValidatedGANMetrics:
-    def calculate_fid(self, real_images, fake_images)
-    def calculate_inception_score(self, images)
-    def _extract_features(self, images)
-    def _get_predictions(self, images)
-    
-class DatasetLoader:
-    def load_real_images(self, max_images, use_validation)
-
-class AcademicPanoramicEvaluator:
-    def evaluate_model(self, model_path, model_name, real_images)
-```
-
-**generate.py (Inference Script)**
-
-Contains:
-- Model loading from checkpoint
-- Batch generation with specified class
-- Image post-processing and saving
-- Grid visualization
-
-Key Functions:
-```python
-def load_generator(checkpoint_path)           # Load trained model
-def generate_images(generator, num, class_idx) # Generate batch
-def save_image_grid(images, output_path)      # Save results
-```
-
----
