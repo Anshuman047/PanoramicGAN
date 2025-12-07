@@ -80,6 +80,7 @@ The discriminator uses spectral normalization throughout:
 ---
 
 ## Dataset
+**Note:** This work uses a proprietary panoramic image dataset that cannot be shared due to licensing restrictions. The dataset owner has granted permission for use in this research. However, the code is fully functional and can be used with your own panoramic image dataset organized in the same structure.
 
 ### Structure and Statistics
 ```
@@ -90,8 +91,6 @@ Proprietary Panoramic Dataset
 ─────────────────────────────────────
 Total:         25,934 panoramic images
 ```
-
-**Note:** The dataset used in this work is proprietary and cannot be publicly shared due to licensing and privacy restrictions. However, the code is fully functional and can be used with your own panoramic image dataset organized in the same structure.
 
 ### Dataset Characteristics
 | Property | Value |
